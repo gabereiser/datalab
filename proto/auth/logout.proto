@@ -1,0 +1,12 @@
+syntax = "proto3";
+option go_package="github.com/gabereiser/datalab/rpc/auth";
+package datalab.auth;
+
+message LogoutRequest {
+    string token = 1;
+}
+
+message LogoutResponse {
+    bool success = 1;
+    repeated string errors = 2;
+}
