@@ -1,6 +1,6 @@
 syntax = "proto3";
-option go_package="github.com/gabereiser/datalab/rpc/auth";
-package datalab.auth;
+option go_package="github.com/gabereiser/datalab/rpc";
+package datalab.rpc;
 
 message LoginRequest {
     string email = 1;

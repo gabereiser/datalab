@@ -58,7 +58,7 @@ dep:
 
 protoc:
 	@mkdir -p rpc
-	@cd proto && which protoc && protoc --go_out=../rpc --go_opt=paths=source_relative --go-grpc_out=../rpc --go-grpc_opt=paths=source_relative *.proto auth/*.proto
+	@cd proto && which protoc && protoc --go_out=../rpc --go_opt=paths=source_relative --go-grpc_out=../rpc --go-grpc_opt=paths=source_relative **/*.proto
 
 $(PLATFORMS):
 	@echo "Building for $(os) $(arch)"
