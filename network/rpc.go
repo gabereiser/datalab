@@ -3,9 +3,7 @@ package network
 import (
 	"context"
 
-	rpc "github.com/gabereiser/datalab/rpc"
-	ath "github.com/gabereiser/datalab/rpc/auth"
-	wb "github.com/gabereiser/datalab/rpc/workbook"
+	"github.com/gabereiser/datalab/rpc"
 )
 
 type AuthRpcService struct {
@@ -16,10 +14,10 @@ type WorkbookRpcService struct {
 	rpc.UnimplementedWorkbookServer
 }
 
-func (AuthRpcService) Login(context context.Context, in *ath.LoginRequest) (*ath.LoginResponse, error) {
+func (AuthRpcService) Login(context context.Context, in *rpc.LoginRequest) (*rpc.LoginResponse, error) {
 	return nil, nil
 }
 
-func (WorkbookRpcService) CreateWorkbook(context context.Context, in *wb.CreateWorkbookRequest) (*rpc.IDResponse, error) {
+func (WorkbookRpcService) CreateWorkbook(context context.Context, in *rpc.CreateWorkbookRequest) (*rpc.IDResponse, error) {
 	return nil, nil
 }

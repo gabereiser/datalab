@@ -1,7 +1,0 @@
-syntax = "proto3";
-option go_package="github.com/gabereiser/datalab/rpc";
-package datalab.rpc;
-
-message LogoutRequest {
-    string token = 1;
-}

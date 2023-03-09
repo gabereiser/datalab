@@ -12,3 +12,13 @@ message LoginResponse {
     string token = 2;
     repeated string errors = 3;
 }
+
+message RefreshTokenRequest {
+    string token = 1;
+}
+
+message RefreshTokenResponse {
+    bool success = 1;
+    repeated string errors = 2;
+    string token = 3;
+}

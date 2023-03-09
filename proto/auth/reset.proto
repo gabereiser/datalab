@@ -1,7 +1,0 @@
-syntax = "proto3";
-option go_package="github.com/gabereiser/datalab/rpc";
-package datalab.rpc;
-
-message ResetPasswordRequest {
-    string email = 1;
-}
