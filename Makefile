@@ -42,7 +42,7 @@ arch = $(word 2, $(temp))
 ext = $(word 3, $(temp))
 
 
-all: clean dep protoc compile
+all: clean protoc dep compile
 
 compile: $(PLATFORMS)
 	@echo "Done"
