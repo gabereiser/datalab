@@ -1,0 +1,26 @@
+syntax = "proto3";
+option go_package="github.com/gabereiser/datalab/rpc";
+
+package datalab;
+
+import "common.proto";
+import "auth/login.proto";
+import "auth/logout.proto";
+import "auth/reset.proto";
+
+import "workbook/mapping.proto";
+import "workbook/workbook.proto";
+
+service Auth {
+    rpc Login(datalab.auth.LoginRequest) returns (datalab.auth.LoginResponse);
+    rpc Logout(datalab.auth.LogoutRequest) returns (datalab.Response);
+    rpc ResetPassword(datalab.auth.ResetPasswordRequest) returns (datalab.Response);
+}
+
+service Workbook {
+    rpc CreateWorkbook(datalab.workbook.CreateWorkbookRequest) returns (datalab.IDResponse);
+    rpc DeleteWorkbook(datalab.workbook.DeleteWorkbookRequest) returns (datalab.Response);
+    
+    rpc CreateMapping(datalab.workbook.CreateMappingRequest) returns (datalab.IDResponse);
+    rpc DeleteMapping(datalab.workbook.DeleteMappingRequest) returns (datalab.Response);
+}

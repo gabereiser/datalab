@@ -1,0 +1,26 @@
+syntax = "proto3";
+option go_package="github.com/gabereiser/datalab/rpc/workbook";
+package datalab.workbook;
+
+message CreateWorkbookRequest {
+    string token = 1;
+    optional string org = 2;
+    string name = 3;
+}
+
+message CreateWorkbookResponse {
+    bool success = 1;
+    repeated string errors = 2;
+    string id = 3;
+}
+
+message DeleteWorkbookRequest {
+    string token = 1;
+    optional string org = 2;
+    string workbook_id = 3;
+}
+
+message DeleteWorkbookResponse {
+    bool success = 1;
+    repeated string errors = 2;
+}

@@ -22,6 +22,8 @@ type Configuration struct {
 	DatabaseUrl      string `json:"database_url"`
 	DatabasePort     int    `json:"database_port"`
 	DatabaseName     string `json:"database_name"`
+
+	Theme string `json:"theme"`
 }
 
 var Config *Configuration = LoadConfig()

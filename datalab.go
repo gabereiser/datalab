@@ -1,9 +1,11 @@
 package datalab
 
 import (
+	"embed"
 	_ "embed"
 
 	"github.com/gabereiser/datalab/config"
+	"github.com/gabereiser/datalab/data"
 	"github.com/gabereiser/datalab/log"
 	"github.com/gabereiser/datalab/network"
 )
@@ -11,6 +13,9 @@ import (
 //go:generate bash .ops/version.sh
 //go:embed version.txt
 var Version string
+
+//go:embed views/*
+var viewsfs embed.FS
 
 var Banner string = `
  ____        _        _          _     
@@ -20,8 +25,16 @@ var Banner string = `
 |____/ \__,_|\__\__,_|_____\__,_|_.__/ 
 `
 
+var server *network.WebServer
+
 func Run() {
 	log.Info("secret key is %s", config.Config.SecretKey)
-	server := network.NewWebServer()
+	data.Migrate()
+	server = network.NewWebServer(viewsfs)
+	server.SetupRoutes()
 	server.Listen(config.Config.Domain + ":8080")
+}
+
+func Shutdown() {
+	server.Stop()
 }

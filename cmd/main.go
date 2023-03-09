@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 	"os/signal"
-	"syscall"
 
 	"github.com/gabereiser/datalab/log"
 
@@ -14,12 +13,15 @@ import (
 var sigterm chan os.Signal = make(chan os.Signal)
 
 func main() {
-	signal.Notify(sigterm, syscall.SIGTERM, syscall.SIGINT)
+	signal.Notify(sigterm, os.Interrupt)
 	fmt.Println(datalab.Banner)
 	log.Info("DATALAB %s", datalab.Version)
 	log.Info("Starting Datalab")
+	go func() {
+		<-sigterm
+		log.Info("Shutting down...")
+		os.Exit(0)
+	}()
+	defer datalab.Shutdown()
 	datalab.Run()
-	<-sigterm
-	fmt.Println()
-	log.Info("Stopping lab...")
 }

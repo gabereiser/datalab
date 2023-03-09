@@ -5,8 +5,3 @@ package datalab.auth;
 message ResetPasswordRequest {
     string email = 1;
 }
-
-message ResetPasswordResponse {
-    bool success = 1;
-    repeated string errors = 2;
-}

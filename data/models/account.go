@@ -13,4 +13,10 @@ type AccountModel struct {
 	VToken   string    `gorm:"not null"`
 	Joined   time.Time `gorm:"autoCreateTime"`
 	Disabled bool
+
+	Organizations []OrganizationModel `gorm:"many2many:organizations_accounts"`
+}
+
+func (AccountModel) TableName() string {
+	return "accounts"
 }

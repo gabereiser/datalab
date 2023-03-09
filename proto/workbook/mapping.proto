@@ -1,0 +1,14 @@
+syntax = "proto3";
+option go_package="github.com/gabereiser/datalab/rpc/workbook";
+package datalab.workbook;
+
+message CreateMappingRequest {
+    string token = 1;
+    string workbook_id = 2;
+    string name = 3;
+}
+
+message DeleteMappingRequest {
+    string token = 1;
+    string mapping_id = 2;
+}
