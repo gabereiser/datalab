@@ -1,3 +1,3 @@
 #!/bin/sh
 
-cd ui && npm run build
+cd ui && npm i && npm run build

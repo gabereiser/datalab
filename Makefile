@@ -9,7 +9,7 @@ run: build
 	@./bin/datalab
 
 clean:
-	@rm -rf rpc && go clean && rm -rf bin && rm -rf public
+	@rm -rf rpc && go clean && rm -rf bin && rm -rf public && cd ui && rm -rf node_modules
 
 dep:
 	@go mod tidy
