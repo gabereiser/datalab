@@ -4,5 +4,13 @@
 [Bb]uild
 [Pp]ublic
 [Rr]eleases
+**/node_modules
+*.exe
+*.msi
+*.pkg
+*.deb
+*.rpm
+*.zip
+*.tar.gz
 
 config.json
