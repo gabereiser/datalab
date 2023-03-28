@@ -10,11 +10,10 @@ import (
 	"github.com/gabereiser/datalab/network"
 )
 
-//go:generate bash .ops/version.sh
-//go:embed version.txt
-var Version string
+var Version string = "dev"
 
-//go:embed views/*
+//go:generate bash .ops/vite.sh
+//go:embed public/*
 var viewsfs embed.FS
 
 var Banner string = `

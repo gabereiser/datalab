@@ -2,9 +2,7 @@
 .vscode
 .DS_Store
 [Bb]uild
-
+[Pp]ublic
 [Rr]eleases
 
-rpc
 config.json
-version.txt

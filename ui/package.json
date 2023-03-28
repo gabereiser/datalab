@@ -1,0 +1,16 @@
+{
+  "name": "ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "vite build --emptyOutDir --outDir=../public/static ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mdb-ui-kit": "^6.2.0",
+    "vite": "^4.2.1"
+  }
+}

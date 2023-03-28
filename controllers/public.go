@@ -10,17 +10,17 @@ func RegisterHandler(c *fiber.Ctx) error {
 }
 
 func IndexScreen(c *fiber.Ctx) error {
-	return c.Render("views/index", fiber.Map{
+	return c.Render("public/static/index", fiber.Map{
 		"Title": "Datalab",
 		"User":  nil,
-	}, "layouts/default")
+	})
 }
 
 func PrivacyScreen(c *fiber.Ctx) error {
-	return c.Render("views/index", fiber.Map{
+	return c.Render("index", fiber.Map{
 		"Title": "Datalab",
 		"User":  nil,
-	}, "layouts/default")
+	})
 }
 
 func AboutScreen(c *fiber.Ctx) error {

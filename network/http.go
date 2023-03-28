@@ -48,6 +48,7 @@ func (s *WebServer) Stop() {
 }
 
 func (s *WebServer) SetupRoutes() {
+	s.fiber.Static("/static", "public/static")
 	// public routes
 	s.fiber.Get("/", controllers.IndexScreen)
 	s.fiber.Get("/privacy", controllers.PrivacyScreen)
