@@ -30,7 +30,7 @@ func Run() {
 	log.Info("secret key is %s", config.Config.SecretKey)
 	data.Migrate()
 	server = network.NewWebServer(viewsfs)
-	server.SetupRoutes()
+	server.SetupRoutes(viewsfs)
 	server.Listen(config.Config.Domain + ":8080")
 }
 

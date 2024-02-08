@@ -24,13 +24,14 @@ func NewAuthMiddleware() fiber.Handler {
 	return func(c *fiber.Ctx) error {
 		if token, ok := c.Locals("_auth").(*jwt.Token); ok {
 			claims := token.Claims.(jwt.MapClaims)
-			log.Info("[INFO] jwt key %v %v", token, claims)
+			log.Info("jwt key %v %v", token, claims)
 			return c.Next()
 		} else {
+			log.Info("Unauthorized view")
 			return c.Render("views/401", fiber.Map{
 				"Status":  401,
 				"Message": "Unauthorized",
-			}, "layouts/default")
+			}, "index")
 		}
 	}
 }

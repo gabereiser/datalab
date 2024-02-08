@@ -15,6 +15,7 @@ var sigterm chan os.Signal = make(chan os.Signal)
 func main() {
 	signal.Notify(sigterm, os.Interrupt)
 	fmt.Println(datalab.Banner)
+	log.LogSetup()
 	log.Info("DATALAB %s", datalab.Version)
 	log.Info("Starting Datalab")
 	go func() {

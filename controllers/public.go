@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"github.com/gabereiser/datalab/controllers/auth"
+	"github.com/gabereiser/datalab/log"
 	"github.com/gofiber/fiber/v2"
 )
 
@@ -10,7 +11,8 @@ func RegisterHandler(c *fiber.Ctx) error {
 }
 
 func IndexScreen(c *fiber.Ctx) error {
-	return c.Render("public/static/index", fiber.Map{
+	log.Info("index")
+	return c.Render("public/index", fiber.Map{
 		"Title": "Datalab",
 		"User":  nil,
 	})

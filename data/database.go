@@ -24,6 +24,10 @@ var DB *gorm.DB
 
 func NewDatabase() {
 	if DB == nil {
+		if config.Config.DatabaseUser == "" {
+			log.Err("No Datadata Configured")
+			return
+		}
 		dsn := fmt.Sprintf("postgresql://%s:%s@%s:%d/%s", config.Config.DatabaseUser, config.Config.DatabasePassword, config.Config.DatabaseUrl, config.Config.DatabasePort, config.Config.DatabaseName)
 		d, e := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 		if e != nil {
@@ -36,6 +40,10 @@ func NewDatabase() {
 func Migrate() {
 	if DB == nil {
 		NewDatabase()
+	}
+	if DB == nil {
+		log.Err("Unable to migrate without a database configured")
+		return
 	}
 	DB.AutoMigrate(&AccountModel{})
 	DB.AutoMigrate(&OrganizationModel{})

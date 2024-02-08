@@ -12,6 +12,7 @@ import (
 	"github.com/gabereiser/datalab/log"
 	"github.com/gabereiser/datalab/security"
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/filesystem"
 	jwtware "github.com/gofiber/jwt/v3"
 	html "github.com/gofiber/template/html"
 )
@@ -47,8 +48,17 @@ func (s *WebServer) Stop() {
 	}
 }
 
-func (s *WebServer) SetupRoutes() {
-	s.fiber.Static("/static", "public/static")
+func (s *WebServer) SetupRoutes(view embed.FS) {
+	/*s.fiber.Use("/", filesystem.New(filesystem.Config{
+		Root: http.FS(view),
+	}))*/
+	s.fiber.Use("/", filesystem.New(filesystem.Config{
+		Root:       http.FS(view),
+		PathPrefix: "public",
+		Browse:     true,
+	}))
+	//s.fiber.Static("/assets", "public/assets")
+
 	// public routes
 	s.fiber.Get("/", controllers.IndexScreen)
 	s.fiber.Get("/privacy", controllers.PrivacyScreen)

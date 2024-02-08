@@ -4,10 +4,13 @@ import (
 	"log"
 )
 
-func Info(fmt string, args ...interface{}) {
-	log.Printf("[INFO] "+fmt+"\r\n", args...)
+func LogSetup() {
+	log.SetFlags(0)
+}
+func Info(msg string, args ...interface{}) {
+	log.Printf("[INFO] "+msg+"\r\n", args...)
 }
 
-func Err(fmt string, args ...interface{}) {
-	log.Printf("[ERROR] "+fmt+"\r\n", args...)
+func Err(msg string, args ...interface{}) {
+	log.Printf("[ERROR] "+msg+"\r\n", args...)
 }
